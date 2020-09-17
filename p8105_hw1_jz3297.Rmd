@@ -62,11 +62,13 @@ ncol(penguins)
 mean(penguins$flipper_length_mm, na.rm = TRUE)
 ```
 
-
-make a scatterplot 
+make a scatterplot of flipper length (mm) and bill length (mm).
 
 ```{r}
-
+ggplot(data = penguins) +
+  geom_point(
+    mapping = aes(x = bill_length_mm, y = flipper_length_mm, color = species)
+  )
 ```
 
 
