@@ -62,7 +62,7 @@ I cannot convert logical to factor and multiply the random samply by the result.
 * Here are the names in this dataset: `r names(penguins)`. 
   * The range of bill length (mm) is `r range(penguins$bill_length_mm, na.rm = TRUE)`. 
   * The range of bill depth (mm) is `r range(penguins$bill_depth_mm, na.rm = TRUE)`. 
-  * The range of flipper_length (mm) is `r range(penguins$flipper_length_mm, na.rm = TRUE)`. 
+  * The range of flipper length (mm) is `r range(penguins$flipper_length_mm, na.rm = TRUE)`. 
 
 * This dataset has `r nrow(penguins)` rows and `r ncol(penguins)` columns.
 
