@@ -53,22 +53,23 @@ as.numeric(as.factor(pull(prob1_df, samp_gt_0))) * pull(prob1_df, samp)
 
 ## Problem 2
 
-Write a short description of the penguins dataset.
+Write a short description of the penguins data set.
 
 ```{r description_of_penguins}
-as_tibble(penguins)
+summary(penguins)
 nrow(penguins)
 ncol(penguins)
 mean(penguins$flipper_length_mm, na.rm = TRUE)
 ```
 
-make a scatterplot of flipper length (mm) and bill length (mm).
+Make a scatter plot of flipper length (mm) and bill length (mm).
 
-```{r}
+```{r yx_scatter}
 ggplot(data = penguins) +
   geom_point(
-    mapping = aes(x = bill_length_mm, y = flipper_length_mm, color = species)
+    mapping = aes(x = bill_length_mm, y = flipper_length_mm, color = species), na.rm = TRUE
   )
+ggsave(file = "hw1_plot.pdf", width = 12, height = 9)
 ```
 
 
