@@ -6,7 +6,7 @@ output: github_document
 
 This is my solution to HW1.
 
-```{r load_package}
+```{r load_package, collapse = TRUE}
 library(tidyverse)
 data("penguins", package = "palmerpenguins")
 ```
@@ -14,7 +14,7 @@ data("penguins", package = "palmerpenguins")
 
 ## Problem 1
 
-Create a data frame with the specified elements.
+#### Create a data frame with the specified elements.
 
 ```{r create_df}
 prob1_df = 
@@ -26,9 +26,9 @@ prob1_df =
 )
 ```
 
-Take the mean of each variable in my data frame.
+#### Take the mean of each variable in my data frame.
 
-```{r mean_pull_var}
+```{r mean_pull_var, collapse = TRUE}
 mean(pull(prob1_df, samp))
 mean(pull(prob1_df, samp_gt_0))
 mean(pull(prob1_df, char_vec))
@@ -37,39 +37,43 @@ mean(pull(prob1_df, factor_vec))
 
 I can take the mean of numbers and logical but not character or factor.
 
-```{r try_numeric}
+```{r try_numeric, eval = FALSE}
 as.numeric(pull(prob1_df, samp))
 as.numeric(pull(prob1_df, samp_gt_0))
 as.numeric(pull(prob1_df, char_vec))
 as.numeric(pull(prob1_df, factor_vec))
 ```
 
-```{r covert_logical_vector}
+I can convert numbers, logical, and character to numeric values but not factor.
+
+```{r covert_logical_vectorm, collapse = TRUE}
 as.numeric(pull(prob1_df, samp_gt_0)) * pull(prob1_df, samp)
 as.factor(pull(prob1_df, samp_gt_0)) * pull(prob1_df, samp)
 as.numeric(as.factor(pull(prob1_df, samp_gt_0))) * pull(prob1_df, samp)
 ```
 
+I cannot convert logical to factor and multiply the random samply by the result.
+
 
 ## Problem 2
 
-Write a short description of the penguins data set.
+#### A short description of the penguins dataset.
 
-```{r description_of_penguins}
-summary(penguins)
-nrow(penguins)
-ncol(penguins)
-mean(penguins$flipper_length_mm, na.rm = TRUE)
-```
+* Here are the names in this dataset: `r names(penguins)`. 
+  * The range of bill length (mm) is `r range(penguins$bill_length_mm, na.rm = TRUE)`. 
+  * The range of bill depth (mm) is `r range(penguins$bill_depth_mm, na.rm = TRUE)`. 
+  * The range of flipper_length (mm) is `r range(penguins$flipper_length_mm, na.rm = TRUE)`. 
 
-Make a scatter plot of flipper length (mm) and bill length (mm).
+* This dataset has `r nrow(penguins)` rows and `r ncol(penguins)` columns.
+
+* The mean of flipper length is `r mean(penguins$flipper_length_mm, na.rm = TRUE)`mm.
+
+#### Make a scatter plot of flipper length (mm) and bill length (mm).
 
 ```{r yx_scatter}
 ggplot(data = penguins) +
   geom_point(
-    mapping = aes(x = bill_length_mm, y = flipper_length_mm, color = species), na.rm = TRUE
+    mapping = aes(x = bill_length_mm, y = flipper_length_mm, color = species)
   )
 ggsave(file = "hw1_plot.pdf", width = 12, height = 9)
 ```
-
-
